@@ -1,0 +1,478 @@
+{% extends 'pages/base.html' %} {% load crispy_forms_tags %} {% load static %}{% block content %}
+
+<div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+        <a class="navbar-brand" href="#"> <img src="{% static 'Assets/ImagesDesign/LogoNObg.png'%}" class="card-img-top" alt="...">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">
+                        <span class="card-title userName">{{first_nameAndlast_name}}</span>
+
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row justify-content-md-center justify-content-sm-center">
+            <div class="col-3 leftSidePage">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item home link">
+                        <a href="{% url 'home' %}"><i class="fas fa-home"></i> Home</a>
+                    </li>
+
+                    <li class="list-group-item link">
+                        <a href="{% url 'opinions' %}"><i class="fas fa-fire"></i> Unpopular opinions</a>
+                    </li>
+                    <li class="list-group-item link">
+                        <a href="{% url 'media' %}"><i class="fas fa-play-circle"></i> Media</a>
+                    </li>
+
+                    <li class="list-group-item link">
+                        <a href="{% url 'Inbox' request.user.id %}"><i class="fas fa-envelope-open"></i> Messages </a>
+                    </li>
+                    <li class="list-group-item link">
+                        <a href="{% url 'profile' request.user.id%}"><i class="fas fa-user-alt"></i> Profile</a>
+                    </li>
+
+
+                </ul>
+            </div>
+            {% if checkUserInDatabase > 0%}
+            <div class="col-xl-6 col-md-9 col- midleSidePage">
+
+                <div class="profileDetails">
+
+                    {%if checkProfileInDatabase == 0%}
+                    <div class="card">
+                        <img src="https://images.pexels.com/photos/1631677/pexels-photo-1631677.jpeg?cs=srgb&dl=pexels-abdullah-ghatasheh-1631677.jpg&fm=jpg" class="card-img-top" alt="...">
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <div class="profileImage">
+                                <img src="{% static 'Assets/ImagesDesign/default_profile.png'%}" class="card-img-top rounded-circle" alt="...">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="profileButton float-right">
+                                <button type="button" class="btn btn-outline-primary my-2 my-sm-0" data-toggle="modal" data-target="#exampleModalLong">Set up profile</button>
+
+                                <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLongTitle">Set up profile</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                          </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form method="POST" action="" enctype="multipart/form-data">
+                                                    {% csrf_token %}
+                                                    <div class="row">
+                                                        <div class="col-12">
+                                                            {{profileForm.Bio|as_crispy_field}}
+                                                        </div>
+
+                                                        <div class="col-6">
+                                                            {{profileForm.profileImage|as_crispy_field}}
+                                                        </div>
+
+                                                        <div class="col-6">
+                                                            {{profileForm.backroundImage|as_crispy_field}}
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="submit" name="CreateProfile" class="btn btn-primary">Save Profile</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {%elif checkProfileInDatabase == 1%}
+                    <div class="card">
+                        <img src="{{ profileTable.backroundImage.url }}" class="card-img-top" alt="...">
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <div class="profileImage">
+                                <img src="{{ profileTable.profileImage.url }}" class="card-img-top rounded-circle" alt="...">
+                            </div>
+                        </div>
+
+
+                        {%if userLoggedIn == pk%}
+                        <div class="col">
+                            <div class="profileButton float-right">
+                                <button type="button" class="btn btn-outline-primary my-2 my-sm-0" data-toggle="modal" data-target="#exampleModalLong">Edit profile</button>
+
+                                <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                          </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form method="POST" action="" enctype="multipart/form-data">
+                                                    {% csrf_token %}
+                                                    <div class="row">
+                                                        <div class="col-12">
+                                                            {{EditProfile.Bio|as_crispy_field}}
+                                                        </div>
+
+                                                        <div class="col-6">
+                                                            {{EditProfile.profileImage|as_crispy_field}}
+                                                        </div>
+
+                                                        <div class="col-6">
+                                                            {{EditProfile.backroundImage|as_crispy_field}}
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="submit" name="EditProfile" class="btn btn-primary">Save changes</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {%else%}
+                        <div class="col">
+                            <span class="messageIcon">
+                                <a href="{% url 'chat' request.user.id profileTable.userID.id %}">
+                                    <i class="fas fa-envelope-open"></i>
+                                </a>
+                            </span>{%if userFollowedAlready == 0 %}
+                            <div class="profileButton float-right">
+                                <form method="POST" action="" enctype="multipart/form-data" class="commentFormWrapper">
+                                    {% csrf_token %}
+                                    <button type="submit" name="followUser" class="btn btn-outline-primary my-2 my-sm-0">Follow</button> {{followingForm}}
+                                </form>
+                            </div>
+
+                            {%else%}
+
+                            <div class="profileButton float-right">
+                                <form method="POST" action="" enctype="multipart/form-data" class="commentFormWrapper">
+                                    {% csrf_token %}
+                                    <button type="submit" name="UnfollowUser" class="btn btn-outline-primary my-2 my-sm-0">Unfollow</button>
+                                </form>
+                            </div>
+
+                            {%endif%}
+                        </div>
+
+                        {%endif%}
+                    </div>
+                    <div class="card bottomBox">
+                        <div class="card-body">
+                            <div class="name">
+                                <p>
+                                    <span class="card-title userName">{{first_nameAndlast_name}}</span>
+                                </p>
+                            </div>
+
+                            <div>
+                                <p class="Bio">
+                                    {{profileTable.Bio}}
+                                </p>
+                            </div>
+
+                            <div class="row followerBox">
+                                <div class="col-4">
+                                    <span class="numbersFollowing">
+                                        0
+                                    </span>
+
+                                    <span class="veb" type="button" class="btn btn-primary">
+                                        Following
+                                    </span>
+
+                                </div>
+                                <div class="col-4">
+                                    <span class="numbersFollowers">
+                                        0
+                                    </span>
+
+                                    <span class="veb" type="button" class="btn btn-primary">
+                                        Followers
+                                    </span>
+                                </div>
+
+                                <div class="col-4 eyes">
+                                    <div>
+                                        <span class="numbersEyes">
+                                            0
+                                        </span>
+
+                                        <span class="veb">
+                                            Eyes
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    {%endif%}
+
+                </div>
+                {%if checkProfileInDatabase == 1%}
+
+                <div class="row userDetails">
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <span class="Last_login ">
+                                    Last login : 
+                                </span>
+
+                                <span class="TimeLoggedIn">
+                                    {{userProfileDetails.last_login|timesince}} Ago
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <span class="Last_login ">
+                                    Joined : 
+                                </span>
+                                <span class="TimeLoggedIn">
+                                    {{userProfileDetails.date_joined|timesince}} Ago
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="DataForEyesTable">
+                    <input type="hidden" value="{{request.user.id}}" id="userID" name="UserID" hidden="">
+                    <input type="hidden" value="{{userIDFromURl}}" id="userWaslookedID" name="userWaslookedID" hidden="">
+                    <input type="hidden" value="{{ProfilID_forEyesTable.id}}" id="ProfilID_forEyesTable" name="ProfilID_forEyesTable" hidden="">
+                </div>
+
+
+
+                <div class="row dataPosts">
+                    <div class="col activeWhenClicked1 styleBox">
+                        <p>
+                            Posts
+                        </p>
+                    </div>
+                    <div class="col activeWhenClicked2 styleBox">
+                        <p>
+                            Opinions
+                        </p>
+                    </div>
+                    <div class="col activeWhenClicked3 styleBox">
+                        <p>
+                            Media
+                        </p>
+                    </div>
+                </div>
+
+
+
+                <div class="ALLpostforEachUser">
+
+                    <div class="midleSidePage">
+
+                        {% for i in allPosts %}
+
+                        <div class="card postsWrapper">
+                            <div class="card-body">
+                                <div class="row">
+
+                                    <div class=col-2>
+                                        <a href="{% url 'profile' i.userID.id %}">
+                                            <span class="ImgProfile">
+                                                        <img src="{{ i.profile.profileImage.url }}" class="rounded-circle" alt="...">
+                                                    </span>
+                                        </a>
+
+                                    </div>
+
+                                    <div class=col-10>
+                                        <a href="{% url 'profile' i.userID.id %}">
+                                            <span class="card-title userName">{{i.userID.first_name}} {{i.userID.last_name}}</span>
+                                        </a>
+
+                                        <span class="card-title timePosted float-right">{{i.DatePosted|timesince}} ago </span>
+                                    </div>
+
+                                </div>
+
+                                <div class="textPadding">
+                                    <p class="card-text">{{i.post}}</p>
+                                </div>
+                            </div>
+                            <a href="{% url 'post' i.id %}">
+                                <img class="card-img-bottom" src="{{ i.images.url }}" alt="Card image cap">
+                            </a>
+                            <div class="row bottom">
+                                <div class="col-9">
+                                    {% for tag in i.tags.all%}
+
+                                    <a href="{% url 'tag_detail' tag %}">{{tag}}</a> {%endfor%}
+                                </div>
+
+
+                            </div>
+
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                {%endif%}
+
+
+                <div class="ALLOpinionsforEachUser">
+                    <div class="midleSidePage">
+                        {% for i in allOpinions %}
+                        <div class="card postsWrapper">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class=col-2>
+                                        <a href="{% url 'profile' i.userID.id %}">
+                                            <span class="ImgProfile">
+                                                    <img src="{{ i.profile.profileImage.url }}" class="rounded-circle" alt="...">
+                                                </span>
+                                        </a>
+
+                                    </div>
+
+                                    <div class=col-10>
+                                        <a href="{% url 'profile' i.userID.id %}">
+                                            <span class="card-title userName">{{i.userID.first_name}} {{i.userID.last_name}}</span>
+                                        </a>
+                                        <span class="card-title timePosted float-right">{{i.DatePosted|timesince}} ago </span>
+                                    </div>
+                                </div>
+
+                                <a href="{% url 'opinionDetail' i.id %}">
+                                    <div class="textPadding">
+                                        <p class="card-text">{{i.opinion}}</p>
+                                    </div>
+                                </a>
+
+                            </div>
+
+                            <div class="row bottom">
+                                <div class="col-9">
+                                    {% for tag in i.tags.all%}
+                                    <a href="{% url 'tag_ForOpinions' tag %}">{{tag}}</a> {%endfor%}
+                                </div>
+                            </div>
+                        </div>
+                        {%endfor%}
+                    </div>
+                </div>
+
+
+
+                <div class="ALLVidforEachUser">
+                    <div class="midleSidePage">
+                        {% for i in allVideos %}
+                        <div class="card postsWrapper">
+                            <div class="card-body">
+                                <div class="row">
+
+                                    <div class=col-2>
+                                        <a href="{% url 'profile' i.profile.id %}">
+                                            <span class="ImgProfile">
+                                                        <img src="{{ i.profile.profileImage.url }}" class="rounded-circle" alt="...">
+                                                    </span>
+                                        </a>
+
+                                    </div>
+
+                                    <div class=col-10>
+                                        <a href="{% url 'profile' i.profile.id %}">
+                                            <span class="card-title userName">{{i.userID.first_name}} {{i.userID.last_name}}</span>
+                                        </a>
+                                        {%if request.user.id == i.userID.id%}
+                                        <span class="card-title timePosted float-right"><i class="fas fa-grip-lines"></i></span> {%endif%}
+                                        <span class="card-title timePosted float-right">{{i.Date|timesince}} ago </span>
+                                    </div>
+
+                                </div>
+                                <div class="textPadding">
+                                    <p class="card-text">{{i.videoTitle}}</p>
+                                </div>
+                            </div>
+
+                            <a href="{% url 'mediaDetail' i.id%}">
+                                <div class="embed-responsive embed-responsive-16by9">
+                                    <video width="500" height="500">
+                                            <source src="{{i.video.url}}" type="video/mp4">
+                                            <b>{{video.title}}</b>
+                                        </video>
+                                </div>
+                            </a>
+                        </div>
+
+                        {%endfor%}
+                    </div>
+                </div>
+
+            </div>
+
+            {%else%}
+            <div class="col-9 rightSidePage">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="userNotFound">
+                            <h4>Sorry, that page doesn’t exist!</h4>
+                            <p>Why not try a search to find something else?</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {% endif %}
+        </div>
+    </div>
+</div>
+</div>
+
+{% endblock %} {% block javascript %}
+
+<script src="{% static 'Assets/JS/CreateEyes.js'%}"></script>
+<script src="{% static 'Assets/JS/followersAndFollowing.js'%}"></script>
+<script src="{% static 'Assets/JS/numberOfEyes.js'%}"></script>
+
+<script src="{% static 'Assets/JS/displayDataOnProfile.js'%}"></script>
+
+
+{% endblock %}

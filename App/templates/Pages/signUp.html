@@ -1,0 +1,69 @@
+{% extends 'pages/base.html' %} {% load crispy_forms_tags %} {% load static %}{% block content %}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-6 col-md signUpWrapper">
+            <div class="mx-auto" style="width: 500px;">
+                <div class="topLogo">
+                    <div>
+                        <img src="{% static 'Assets/ImagesDesign/LogoNObg.png'%}" class="card-img-top" alt="...">
+                    </div>
+
+                    <div>
+                        <h3>Sign up to Meable</h3>
+                    </div>
+
+                </div>
+                <div class="formWrapper">
+                    <form method="POST" action="" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-12">
+                                {{ fromReg.username|as_crispy_field }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                {{ fromReg.first_name|as_crispy_field }}
+                            </div>
+                            <div class="col-6">
+                                {{ fromReg.last_name|as_crispy_field }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                {{ fromReg.email|as_crispy_field }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                {{ fromReg.password1|as_crispy_field }}
+                            </div>
+                            <div class="col-6">
+                                {{ fromReg.password2|as_crispy_field }}
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="float-left">
+                                    <a href="{% url 'signIn' %}">Log in for Meable</a>
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="float-right">
+                                    <a href="#">Forgot password ?</a>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" id="signUp" class="btn btn-primary">sign Up</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

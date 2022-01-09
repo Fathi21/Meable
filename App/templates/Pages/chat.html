@@ -1,0 +1,117 @@
+{% extends 'pages/base.html' %} {% load crispy_forms_tags %} {% load static %}{% block content %}
+
+<div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+        <a class="navbar-brand" href="#"> <img src="{% static 'Assets/ImagesDesign/LogoNObg.png'%}" class="card-img-top" alt="...">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <div class="card">
+                        <div class="card-body">
+                            <span class="ImgInbox">
+                                <img src="{{ profilTable.profileImage.url }}" class="img-fluid" alt="Responsive image">
+                            </span>
+
+                            <span class="NameInbox">
+                                {{userTable.first_name}} {{userTable.last_name}}
+                            </span>
+
+                            <span class="lastMessage">
+                                <p>
+                                    Active  {{userTable.last_login|timesince}}
+                                </p>
+                            </span>
+                        </div>
+                    </div>
+                </li>
+
+            </ul>
+
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row justify-content-md-center justify-content-sm-center">
+            <div class="col-3 leftSidePage">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item home link">
+                        <a href="{% url 'home' %}"><i class="fas fa-home"></i> Home</a>
+                    </li>
+
+                    <li class="list-group-item link">
+                        <a href="{% url 'opinions' %}"><i class="fas fa-fire"></i> Unpopular opinions</a>
+                    </li>
+                    <li class="list-group-item link">
+                        <a href="{% url 'media' %}"><i class="fas fa-play-circle"></i> Media</a>
+                    </li>
+
+                    <li class="list-group-item link">
+                        <a href="{% url 'Inbox' request.user.id %}"><i class="fas fa-envelope-open"></i> Messages </a>
+                    </li>
+                    <li class="list-group-item link">
+                        <a href="{% url 'profile' request.user.id%}"><i class="fas fa-user-alt"></i> Profile</a>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="logOutButton">
+                            <div class="row">
+                                <div class="col-3">
+                                    <span class="ImgProfile">
+                                            <img src="{{ profileImg.profileImage.url }}" class="rounded-circle" alt="...">
+                                        </span>
+                                </div>
+                                <div class="col-9">
+                                    <div class="NameOfUserLoggedIn">
+                                        <p>
+                                            {{request.user}}
+
+                                            <a href="{% url 'logout_view' %}"><i class="fas fa-sign-out-alt"></i></a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="data">
+                <input type="hidden" value="{{SenderID}}" id="SenderID" name="SenderID" hidden="">
+                <input type="hidden" value="{{ReciverID}}" id="ReciverID" name="ReciverID" hidden="">
+                <input type="hidden" value="{{inboxTable}}" id="inboxTable" name="inboxTable" hidden="">
+                <input type="hidden" value="{{profileSenderID.id}}" id="profileSenderID" name="profileSenderID" hidden="">
+                <input type="hidden" value="{{inboxID.id}}" id="inboxID" name="inboxID" hidden="">
+
+            </div>
+            <div class="col-xl-6 col-md-9 col- midleSidePage">
+                <div class="card">
+                    <h3 class="text-left">Messaging</h3>
+
+                    <div class="mesgs">
+                        <div id="chatBox">
+                            <div class="msg_history">
+
+                            </div>
+                        </div>
+                        <div class="type_msg">
+                            <div class="input_msg_write">
+                                <textarea class="form-control" class="write_msg" id="message" placeholder="Type a message" required></textarea>
+                                <button class="msg_send_btn" type="button"><i class="fas fa-paper-plane"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+{% endblock %} {% block javascript %}
+<script src="{% static 'Assets/JS/createInbox.js'%}"></script>
+<script src="{% static 'Assets/JS/messageBetweenTwoUsers.js'%}"></script>
+
+{% endblock %}

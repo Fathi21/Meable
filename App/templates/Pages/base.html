@@ -1,0 +1,72 @@
+{% load static %} {% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous" />
+    <link rel="stylesheet" hhref="https://bootstrap-tagsinput.github.io/bootstrap-tagsinput/examples" crossorigin="anonymous" />
+    <link rel="stylesheet" href="{% static 'Assets/CSS/stylesheet.css'%}">
+    <link rel="icon" type="image/png" href="{% static 'Assets/ImagesDesign/LogoNObg.png'%}">
+
+
+    <title>Meable</title>
+</head>
+
+<body>
+
+
+
+    <main>
+
+        {% block content %} {% endblock %}
+
+
+    </main>
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.25.1/moment.min.js"></script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
+    {% block javascript %} {% endblock %} {%if user.is_authenticated %} {% block footer %}
+    <div class="footer">
+        <ul id="menu">
+            <li>
+                <a href="{% url 'home' %}"><i class="fas fa-home"></i></a>
+            </li>
+
+            <li>
+                <a href="{% url 'opinions' %}"><i class="fas fa-fire"></i></a>
+            </li>
+
+            <li>
+                <a href="{% url 'media' %}"><i class="fas fa-play-circle"></i></a>
+            </li>
+
+            <li>
+                <a href="{% url 'Inbox' request.user.id %}"><i class="fas fa-envelope-open"></i></a>
+            </li>
+
+            <li>
+                <a href="{% url 'profile' request.user.id%}"><i class="fas fa-user-alt"></i></a>
+            </li>
+
+            <li>
+                <a href="{% url 'logout_view' %}"><i class="fas fa-sign-out-alt"></i></a>
+            </li>
+
+        </ul>
+    </div>
+    {% endblock %} {%endif%}
+
+</body>
+
+</html>

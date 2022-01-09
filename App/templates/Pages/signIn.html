@@ -1,0 +1,67 @@
+{% extends 'pages/base.html' %} {% load static %}{% block content %}
+
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-sm-6 col-md leftSide">
+            <div class="ads">
+                <p><i class="fas fa-search"></i> Follow your interests.</p>
+
+                <p><i class="fas fa-users"></i> Hear what people are talking about.</p>
+
+                <p><i class="far fa-comments"></i> Join the conversation.</p>
+            </div>
+
+        </div>
+
+        <div class="col-sm-6 col-md rightSide">
+            <div class="logInForm">
+
+                <div class="topLogo">
+                    <div>
+                        <img src="{% static 'Assets/ImagesDesign/LogoNObg.png'%}" class="card-img-top" alt="...">
+                    </div>
+
+                    <div>
+                        <h3>Log in to Meable</h3>
+                    </div>
+
+                </div>
+
+                <div>
+                    <form method="POST" action="" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">User name</label>
+                            <input type="text" name="username" class="form-control" placeholder="Enter User name">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Password</label>
+                            <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="float-left">
+                                    <a href="{% url 'signUp' %}">Sign up for Meable</a>
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="float-right">
+                                    <a href="#">Forgot password</a>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" id="logIn" class="btn btn-primary">Log in</button>
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,1144 @@
+.btn:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+ul#menu li {
+    display: inline;
+}
+
+#menu>li {
+    padding-left: 20px;
+    padding-right: 20px;
+    color: white;
+}
+
+.leftSide {
+    height: 100vh;
+    background-color: #17a2f2;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.rightSide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ads {
+    position: relative;
+    top: 200px;
+    color: white;
+    font-size: 20px;
+    font-weight: bolder;
+    margin-left: 50px;
+}
+
+.ads>p {
+    padding: 25px;
+}
+
+.logInForm {
+    position: relative;
+    bottom: 100px;
+    margin-left: 120px;
+    margin-right: 120px;
+    width: 450px;
+}
+
+.logInForm>div>div>img {
+    width: 70px;
+    margin-bottom: 10px;
+}
+
+#logIn {
+    margin-top: 20px;
+    width: 450px;
+    border-radius: 50px;
+    height: 50px;
+}
+
+.topLogo>div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.topLogo>div>img {
+    width: 70px;
+}
+
+.text-muted {
+    display: none;
+}
+
+.signUpWrapper {
+    padding-top: 50px;
+}
+
+.formWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 450px;
+}
+
+#signUp {
+    margin-top: 20px;
+    width: 450px;
+    border-radius: 50px;
+    height: 50px;
+}
+
+.imgHomePage {
+    width: 70px;
+}
+
+nav>.card-img-top {
+    width: 70px;
+    margin-right: 200px;
+}
+
+.active {
+    font-size: 20px;
+    font-weight: bolder;
+    margin-left: 165px;
+}
+
+.navbar-brand {
+    width: 70px;
+}
+
+.rightSidePage,
+.midleSidePage,
+.leftSidePage {
+    padding: 0px;
+}
+
+.leftSidePage>.list-group {
+    position: sticky;
+    top: 100px;
+}
+
+.fa-home {
+    padding-right: 5px;
+}
+
+.list-group-item {
+    font-size: 20px;
+    font-weight: bolder;
+    margin-top: 10px;
+}
+
+.link:hover {
+    color: #17a2f2;
+}
+
+.bg-light {
+    background-color: #ffffff!important;
+}
+
+.list-group-flush .list-group-item {
+    border-left: 0;
+    border-radius: 0
+}
+
+.asteriskField {
+    display: none;
+}
+
+#id_post {
+    border: 1px solid #17a2f2;
+    height: 80px;
+}
+
+.mb-lg-0,
+.my-lg-0 {
+    margin-bottom: 0!important;
+    position: relative;
+    left: 19px;
+}
+
+.rightSidePage {
+    padding-left: 3px;
+    padding-right: 3px;
+}
+
+.rightSidePage>h3 {
+    color: black;
+}
+
+.button>button {
+    position: relative;
+    left: 160px;
+    top: 10px;
+    width: 100px;
+}
+
+#id_tags {
+    border: 1px solid #17a2f2;
+}
+
+a,
+a:hover,
+a:focus,
+a:active {
+    text-decoration: none;
+    color: inherit;
+}
+
+.card {
+    border: 1px solid white;
+}
+
+.ImgProfile>img {
+    width: 50px;
+    height: 50px;
+}
+
+.postsWrapper {
+    margin-bottom: 10px;
+    margin-top: 15px;
+    padding: 1px;
+    border-radius: 0px;
+}
+
+.postsWrapper>.card-body>.row>.col-10 {
+    position: relative;
+    right: 40px;
+    top: 13px;
+    text-transform: capitalize;
+}
+
+.postsWrapper>.card-body>a>.card-text {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.postsWrapper>.card-body {
+    padding: 0px;
+}
+
+.userName {
+    font-size: large;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+.timePosted {
+    color: black;
+}
+
+.profileDetails>.card {
+    border-radius: 0px;
+}
+
+.profileDetails>.card>img {
+    height: 250px;
+}
+
+.profileImage>img {
+    border: 5px solid white;
+    border-radius: 500px;
+    width: 180px;
+    height: 180px;
+    position: relative;
+    bottom: 80px;
+    left: 15px
+}
+
+.userNotFound>h4 {
+    font-weight: bolder;
+    display: flex;
+    justify-content: center;
+    text-transform: uppercase;
+}
+
+.userNotFound>p {
+    display: flex;
+    justify-content: center;
+}
+
+.profileButton {
+    margin-right: 15px;
+    margin-top: 15px;
+}
+
+.profileButton>form>button {
+    border: 1px solid #17a2f2;
+    font-weight: bold;
+}
+
+.profileButton>form>button:hover {
+    background-color: white;
+    color: #17a2f2
+}
+
+.profileButton>form>button::after {
+    background-color: white;
+    color: #17a2f2
+}
+
+.logOutButton {
+    border: 1px solid #17a2f2;
+    border-radius: 500px;
+    padding: 2px;
+}
+
+.NameOfUserLoggedIn {
+    position: relative;
+    right: 8px;
+    top: 14px
+}
+
+.NameOfUserLoggedIn>p {
+    text-transform: capitalize;
+    font-size: 15px;
+}
+
+.NameOfUserLoggedIn>p>a {
+    color: #17a2f2;
+    font-weight: bold;
+}
+
+.NameOfUserLoggedIn>p>a:hover {
+    color: red;
+    font-weight: bold;
+}
+
+.fa-sign-out-alt {
+    font-size: large;
+}
+
+#id_Bio {
+    height: 80px;
+}
+
+.profileDetails>.bottomBox {
+    position: relative;
+    bottom: 80px;
+}
+
+.numbersFollowers,
+.numbersFollowing,
+.numbersEyes {
+    font-weight: bolder;
+}
+
+.bottom {
+    margin-top: 10px
+}
+
+.fa-thumbs-up,
+.fa-thumbs-down {
+    font-size: larger;
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+.fa-thumbs-down:hover {
+    color: #17a2f2;
+}
+
+.fa-thumbs-up:hover {
+    color: #17a2f2;
+}
+
+.bottom>.col-9 {
+    color: blue;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.postsTagPage {
+    margin-top: 0px;
+}
+
+.NotFoundTag>h4 {
+    font-weight: bolder;
+    text-transform: uppercase;
+}
+
+.likeButton>button {
+    border: none;
+    background-color: white;
+}
+
+.likeButton>button:focus {
+    outline: 0;
+}
+
+#id_opinion {
+    border: 1px solid #17a2f2;
+    height: 80px;
+}
+
+.opinionButton {
+    position: relative;
+    top: 8px;
+}
+
+.fa-check-square,
+.fa-window-close {
+    font-size: larger;
+    cursor: pointer;
+    background-color: white;
+}
+
+.fa-check-square:hover {
+    color: #17a2f2;
+}
+
+.fa-window-close:hover {
+    color: #17a2f2;
+}
+
+.fa-grip-lines {
+    font-size: larger;
+    cursor: pointer;
+    position: relative;
+    left: 25px;
+}
+
+.opinions {
+    padding: 0px;
+    padding-top: 5px;
+    cursor: pointer;
+}
+
+.opinions>p:hover {
+    background-color: rgb(247 249 250);
+}
+
+.rightSidePage {
+    padding-left: 10px;
+}
+
+.linkForMore {
+    color: blue;
+    text-decoration: underline;
+}
+
+.FollowOtherUser {
+    font-size: large;
+    font-weight: 400;
+    text-transform: capitalize;
+    padding-left: 5px;
+    position: relative;
+    top: 10px;
+}
+
+.followUsers {
+    position: relative;
+    top: 5px;
+}
+
+.FollowUserBox {
+    margin-top: 10px;
+}
+
+.userYouCanFollow {
+    border-radius: 0px;
+    padding: 5px;
+}
+
+.paddingTop {
+    margin-bottom: 15px;
+}
+
+#id_comment {
+    border: 1px solid #17a2f2;
+    height: 80px;
+}
+
+.comments {
+    padding: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.commentBox {
+    position: relative;
+    right: 80px;
+    top: 10px;
+}
+
+.NameOfThecommenter {
+    font-size: large;
+    font-weight: bolder;
+    text-transform: capitalize;
+}
+
+.TheComment {
+    font-size: large;
+    padding-top: 10px;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.dateTime {
+    font-size: small;
+    font-weight: bold;
+    color: #212529db;
+}
+
+.CountComments {
+    font-size: larger;
+    font-weight: bold;
+}
+
+.theStaticWord {
+    font-size: larger;
+    font-weight: bold;
+}
+
+.commentsWrapper {
+    margin-top: 15px;
+}
+
+.ImgProfile>a>img {
+    width: 50px;
+    height: 50px;
+}
+
+.EachComment {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.likeAndDislikeWrapper {
+    position: relative;
+    right: 31px;
+}
+
+.editAndDeleteButtons>.row>.col-3 {
+    padding: 0px;
+    padding-left: 15px;
+}
+
+.textPadding {
+    padding-bottom: 15px;
+    padding-top: 15px;
+    font-weight: 500;
+}
+
+hr {
+    border-top: 1px solid #212529bf;
+}
+
+.tagsFromTagPage {
+    color: blue;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.paddingZero {
+    font-weight: bold;
+}
+
+.followerBox {
+    text-align: center;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-color: rgb(207, 207, 207);
+}
+
+.userDetails {
+    position: relative;
+    bottom: 100px;
+    text-align: center;
+    border-bottom: 1px solid black;
+    border-color: rgb(207, 207, 207);
+}
+
+.Last_login {
+    font-weight: bold;
+}
+
+.dataPosts {
+    position: relative;
+    bottom: 100px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.styleBox {
+    color: black;
+    padding-top: 15px;
+}
+
+.styleBox:hover {
+    color: #17a2f2;
+    border-bottom: 1px solid #17a2f2;
+    cursor: pointer;
+}
+
+.numOfViewsBox {
+    margin-left: 15px;
+}
+
+.numOfViewsBox {
+    padding-top: 15px;
+}
+
+.numOfLovedBox {
+    padding-top: 15px;
+}
+
+.numOfViewsBox>.views {
+    font-size: medium;
+    font-weight: bolder;
+}
+
+.numOfLovedBox {
+    text-align: right;
+    margin-right: 15px;
+}
+
+.numOfLovedBox>.loved {
+    font-size: larger;
+    font-weight: bolder;
+    cursor: pointer;
+}
+
+.theNumberOfComments {
+    font-size: larger;
+    font-weight: bold;
+}
+
+.input-group-prepend>.btn {
+    padding: 0px;
+}
+
+.input-group-text {
+    border: 0px solid;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    height: 38px;
+    position: relative;
+    top: -1px;
+    background-color: white;
+    border: 1px solid #17a2f2;
+    color: black;
+    font-weight: bolder;
+}
+
+.borderTheSearcher>input {
+    border: 1px solid #17a2f2;
+}
+
+.input-group-text:hover {
+    background-color: #17a2f2;
+    color: white;
+}
+
+.ImgInbox>img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+}
+
+.NameInbox {
+    font-size: medium;
+    font-weight: bold;
+    text-transform: capitalize;
+    position: relative;
+    bottom: 10px;
+    right: -7px;
+}
+
+.dateInbox {
+    font-size: medium;
+    position: relative;
+    bottom: 10px;
+    float: right;
+}
+
+.lastMessage {
+    position: relative;
+    left: 62px;
+    bottom: 25px;
+    color: #808080c2;
+    font-size: medium;
+}
+
+.container {
+    max-width: 1170px;
+    margin: auto;
+}
+
+.incoming_msg_img>img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+}
+
+.inbox_people {
+    background: #f8f8f8 none repeat scroll 0 0;
+    float: left;
+    overflow: hidden;
+    width: 40%;
+    border-right: 1px solid #c4c4c4;
+}
+
+.inbox_msg {
+    border: 1px solid #c4c4c4;
+    clear: both;
+    overflow: hidden;
+}
+
+.top_spac {
+    margin: 20px 0 0;
+}
+
+.recent_heading {
+    float: left;
+    width: 40%;
+}
+
+.srch_bar {
+    display: inline-block;
+    text-align: right;
+    width: 60%;
+}
+
+.headind_srch {
+    padding: 10px 29px 10px 20px;
+    overflow: hidden;
+    border-bottom: 1px solid #c4c4c4;
+}
+
+.recent_heading h4 {
+    color: #05728f;
+    font-size: 21px;
+    margin: auto;
+}
+
+.srch_bar input {
+    border: 1px solid #cdcdcd;
+    border-width: 0 0 1px 0;
+    width: 80%;
+    padding: 2px 0 4px 6px;
+    background: none;
+}
+
+.srch_bar .input-group-addon button {
+    background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+    border: medium none;
+    padding: 0;
+    color: #707070;
+    font-size: 18px;
+}
+
+.srch_bar .input-group-addon {
+    margin: 0 0 0 -27px;
+}
+
+.chat_ib h5 {
+    font-size: 15px;
+    color: #464646;
+    margin: 0 0 8px 0;
+}
+
+.chat_ib h5 span {
+    font-size: 13px;
+    float: right;
+}
+
+.chat_ib p {
+    font-size: 14px;
+    color: #989898;
+    margin: auto
+}
+
+.chat_img {
+    float: left;
+    width: 11%;
+}
+
+.chat_ib {
+    float: left;
+    padding: 0 0 0 15px;
+    width: 88%;
+}
+
+.chat_people {
+    overflow: hidden;
+    clear: both;
+}
+
+.chat_list {
+    border-bottom: 1px solid #c4c4c4;
+    margin: 0;
+    padding: 18px 16px 10px;
+}
+
+.inbox_chat {
+    height: 550px;
+    overflow-y: scroll;
+}
+
+.active_chat {
+    background: #ebebeb;
+}
+
+.incoming_msg_img {
+    display: inline-block;
+    width: 6%;
+}
+
+.received_msg {
+    display: inline-block;
+    padding: 0 0 0 10px;
+    vertical-align: top;
+    width: 92%;
+}
+
+.received_withd_msg>p {
+    background: #ebebeb none repeat scroll 0 0;
+    border-radius: 3px;
+    color: #646464;
+    font-size: 14px;
+    margin: 0;
+    padding: 5px 10px 5px 12px;
+    width: 100%;
+}
+
+.time_date {
+    color: #747474;
+    display: block;
+    font-size: 12px;
+    margin: 8px 0 0;
+}
+
+.received_withd_msg {
+    width: 57%;
+}
+
+.mesgs {
+    float: left;
+    padding: 30px 15px 0 25px;
+    width: 100%;
+}
+
+.sent_msg p {
+    background: #17a2f2 none repeat scroll 0 0;
+    border-radius: 3px;
+    font-size: 14px;
+    margin: 0;
+    color: #fff;
+    padding: 5px 10px 5px 12px;
+    width: 100%;
+}
+
+.outgoing_msg {
+    overflow: hidden;
+    margin: 26px 0 26px;
+}
+
+.sent_msg {
+    float: right;
+    width: 46%;
+}
+
+.input_msg_write>textarea {
+    background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+    border: medium none;
+    color: #4c4c4c;
+    font-size: 15px;
+    min-height: 80px;
+    width: 93%;
+    border: 1px solid #17a2f2;
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+.type_msg {
+    border-top: 1px solid #c4c4c4;
+    position: relative;
+}
+
+.msg_send_btn {
+    background: #17a2f2 none repeat scroll 0 0;
+    border: medium none;
+    border-radius: 50%;
+    color: #fff;
+    cursor: pointer;
+    font-size: 17px;
+    height: 33px;
+    position: absolute;
+    right: 0;
+    top: 12px;
+    width: 33px;
+}
+
+.messaging {
+    padding: 0 0 50px 0;
+}
+
+.msg_history {
+    height: 516px;
+    overflow-y: auto;
+}
+
+.card>.text-left {
+    position: relative;
+    left: 22px;
+}
+
+.read {
+    color: #17a2f2;
+}
+
+.messageIcon {
+    font-size: 26px;
+    color: #17a2f2;
+    float: right;
+    position: relative;
+    top: 18px;
+}
+
+.ALLpostforEachUser,
+.ALLOpinionsforEachUser,
+.ALLVidforEachUser {
+    position: relative;
+    bottom: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.searchedData>.col-3 {
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 15px;
+}
+
+.searchedData>.col-3:hover {
+    color: #17a2f2;
+    border-bottom: 1px solid #17a2f2;
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #17a2f2;
+    color: white;
+    text-align: center;
+    padding-top: 15px;
+}
+
+.footer {
+    display: none;
+}
+
+@media only screen and (max-width: 993px) {
+    .leftSide {
+        display: none;
+    }
+    .rightSide {
+        margin-top: 100px;
+    }
+}
+
+@media only screen and (max-width: 1199px) {
+    .NameOfThecommenter {
+        position: relative;
+        right: 79px;
+    }
+    .userName {
+        position: relative;
+        right: 52px;
+    }
+    .button>button {
+        position: relative;
+        left: 323px;
+    }
+    .rightSidePage {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 1186px) and (min-width: 990px) {
+    .button>button {
+        position: relative;
+        left: 247px;
+    }
+    .userName {
+        position: relative;
+        right: 33px;
+    }
+}
+
+@media only screen and (max-width: 1024px) {
+    .rightSidePage {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 989px) {
+    .active {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 989px) {
+    .footer {
+        display: block;
+    }
+    .leftSidePage,
+    .rightSidePage {
+        display: none;
+    }
+    .userName {
+        position: relative;
+        right: 26px;
+    }
+    .button>button {
+        position: relative;
+        left: 210px;
+    }
+    .midleSidePage {
+        padding: 15px;
+    }
+}
+
+@media only screen and (max-width: 890px) and (min-width: 768px) {
+    .button>button {
+        position: relative;
+        left: 150px;
+    }
+    .userName {
+        position: relative;
+        right: 0px;
+    }
+    .midleSidePage {
+        font-size: medium;
+        padding: 15px;
+        padding-bottom: 50px;
+    }
+}
+
+@media only screen and (max-width: 725px) and (min-width: 571px) {
+    .button>button {
+        position: relative;
+        left: 150px;
+    }
+    .userName {
+        position: relative;
+        right: -1px;
+        font-size: small;
+    }
+    .midleSidePage {
+        font-size: small;
+        padding: 15px;
+        padding-bottom: 50px;
+    }
+}
+
+@media only screen and (max-width: 562px) and (min-width: 425px) {
+    .button>button {
+        position: relative;
+        left: 73px;
+    }
+    .userName {
+        position: relative;
+        right: -30px;
+        font-size: small;
+    }
+    .midleSidePage {
+        font-size: small;
+        padding: 15px;
+        padding-bottom: 50px;
+    }
+}
+
+@media only screen and (max-width: 1146px) and (min-width: 900px) {
+    .NameOfThecommenter {
+        position: relative;
+        right: 27px;
+    }
+}
+
+@media only screen and (max-width: 899px) and (min-width: 768px) {
+    .NameOfThecommenter {
+        position: relative;
+        right: -2px;
+    }
+    .container {
+        font-size: medium;
+    }
+    .NameOfThecommenter {
+        font-size: medium;
+        font-weight: bold;
+    }
+    .TheComment {
+        font-size: medium;
+    }
+    .dateTime {
+        font-size: smaller;
+        font-weight: bold;
+        color: #212529db;
+    }
+    .CountComments {
+        font-size: medium;
+        font-weight: bold;
+    }
+    .NameInbox {
+        font-size: medium;
+    }
+    .dateInbox {
+        font-size: medium;
+    }
+    .lastMessage {
+        font-size: medium;
+    }
+}
+
+@media only screen and (max-width: 452px) {
+    .NameOfThecommenter {
+        position: relative;
+        right: -42px;
+    }
+    .container {
+        font-size: small;
+    }
+    .NameOfThecommenter {
+        font-size: small;
+        font-weight: bold;
+    }
+    .TheComment {
+        font-size: small;
+    }
+    .dateTime {
+        font-size: smaller;
+        font-weight: bold;
+        color: #212529db;
+    }
+    .CountComments {
+        font-size: small;
+        font-weight: bold;
+    }
+    .NameInbox {
+        font-size: small;
+    }
+    .dateInbox {
+        font-size: small;
+    }
+    .lastMessage {
+        font-size: small;
+    }
+    .input_msg_write>textarea {
+        width: 88%;
+    }
+}

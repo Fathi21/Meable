@@ -1,0 +1,292 @@
+{% extends 'pages/base.html' %} {% load crispy_forms_tags %} {% load static %}{% block content %}
+
+<div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+        <a class="navbar-brand" href="#"> <img src="{% static 'Assets/ImagesDesign/LogoNObg.png'%}" class="card-img-top" alt="...">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Post <span class="sr-only">(current)</span></a>
+                </li>
+
+            </ul>
+            <form method="GET" action="{% url 'searchPost'%}" enctype="multipart/form-data">
+
+                {% csrf_token %}
+                <div class="SearchWrapper">
+                    <label class="sr-only" for="inlineFormInputGroup">Search for people</label>
+                    <div class="input-group mb-2 borderTheSearcher">
+                        <div class="input-group-prepend">
+                            <button class="btn" type="submit"> 
+                                <div class="input-group-text"><i class="fas fa-search"></i></div>
+                            </button>
+                        </div>
+                        <input type="text" class="form-control" name="search" id="inlineFormInputGroup" placeholder="Search Meable">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row justify-content-md-center justify-content-sm-center">
+            <div class="col-3 leftSidePage">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item home link">
+                        <a href="{% url 'home' %}"><i class="fas fa-home"></i> Home</a>
+                    </li>
+
+                    <li class="list-group-item link">
+                        <a href="{% url 'opinions' %}"><i class="fas fa-fire"></i> Unpopular opinions</a>
+                    </li>
+                    <li class="list-group-item link">
+                        <a href="{% url 'media' %}"><i class="fas fa-play-circle"></i> Media</a>
+                    </li>
+
+                    <li class="list-group-item link">
+                        <a href="{% url 'Inbox' request.user.id %}"><i class="fas fa-envelope-open"></i> Messages </a>
+                    </li>
+                    <li class="list-group-item link">
+                        <a href="{% url 'profile' request.user.id%}"><i class="fas fa-user-alt"></i> Profile</a>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="logOutButton">
+                            <div class="row">
+                                <div class="col-3">
+                                    <span class="ImgProfile">
+                                            <img src="{{ profileImg.profileImage.url }}" class="rounded-circle" alt="...">
+                                        </span>
+                                </div>
+                                <div class="col-9">
+                                    <div class="NameOfUserLoggedIn">
+                                        <p>
+                                            {{request.user}}
+
+                                            <a href="{% url 'logout_view' %}"><i class="fas fa-sign-out-alt"></i></a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-xl-6 col-md-9 col- midleSidePage">
+
+                {%if postTable%} {% for i in postTable %}
+                <div class="card postsWrapper postsTagPage">
+                    <div class="card-body">
+                        <div class="row">
+
+                            <div class=col-2>
+                                <a href="{% url 'profile' request.user.id %}">
+                                    <span class="ImgProfile">
+                                        <img src="{{ i.profile.profileImage.url }}" class="rounded-circle" alt="...">
+                                    </span>
+                                </a>
+
+                            </div>
+
+                            <div class=col-10>
+                                <a href="{% url 'profile' request.user.id %}">
+                                    <span class="card-title userName">{{i.userID.first_name}} {{i.userID.last_name}}</span>
+                                </a>
+                                <span class="card-title timePosted float-right">{{i.DatePosted|timesince}} ago </span>
+                            </div>
+
+                        </div>
+                        <div class="textPadding">
+                            <p class="card-text">{{i.post}}</p>
+                        </div>
+                    </div>
+
+                    <a href="{% url 'post' i.id %}">
+                        <img class="card-img-bottom" src="{{ i.images.url }}" alt="Card image cap">
+                    </a>
+
+                    <div class="row bottom">
+                        <div class="col-9">
+                            {% for tag in i.tags.all%}
+
+                            <a href="{% url 'tag_detail' tag %}">{{tag}}</a> {%endfor%}
+                        </div>
+
+                        <div class="col-3 likeButton">
+
+                            <input type="hidden" value="{{request.user.id}}" id="userID" name="UserID" hidden="">
+
+                            <div class="row likeAndDislikeWrapper">
+                                <div class="col-xs-6 likeButton">
+                                    <button value="{{i.id}}" class="fas fa-thumbs-up"></button>
+                                    <span id="countLikes">
+                                        
+                                    </span>
+                                </div>
+                                <div class="col-xs-6 likeButton">
+                                    <button value="{{i.id}}" class="fas fa-thumbs-down"></button>
+
+                                    <span id="countDisLikes">
+                                        
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+                {% endfor %} {%else%}
+
+                <div class="NotFoundTag">
+                    <h4>No results for "{{tag}}"</h4>
+                </div>
+                {%endif%} {%if request.user.id == userTable.id%}
+
+                <div class="editAndDeleteButtons">
+                    <div class="row">
+                        <div class="col-2 editComment">
+                            <button type="button" class="btn btn-outline-primary my-2 my-sm-0" s data-toggle="modal" data-target="#edit">
+                                <i class="fas fa-edit"></i>                              
+                            </button>
+                            <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Edit post</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                      </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form method="POST" action="" enctype="multipart/form-data">
+                                                {% csrf_token %}
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        {{EditPost.post|as_crispy_field}}
+                                                    </div>
+
+                                                    <div class="col-6">
+                                                        {{EditPost.images|as_crispy_field}}
+
+                                                    </div>
+
+                                                    <div class="col-6">
+                                                        {{EditPost.tags|as_crispy_field}}
+
+                                                    </div>
+
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="submit" class="btn btn-primary">Save changes</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <button type="button" class="btn btn-outline-danger my-2 my-sm-0" data-toggle="modal" data-target="#delete">
+                                <i class="far fa-trash-alt"></i>
+                            </button>
+                            <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Delete post</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                      </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>
+                                                Are you sure you want to delete?
+                                            </p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <a href="{% url 'deletePost' postID%}" type="submit" class="btn btn-danger">Delete</a>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {%else%} {%endif%}
+                <form method="POST" action="" enctype="multipart/form-data" class="commentFormWrapper">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-12">
+
+                            {{commentForm.comment|as_crispy_field}}
+
+                            <input type="hidden" value="{{request.user.id}}" id="userID" name="UserID" hidden="">
+                            <input type="hidden" value="{{profileID.id}}" id="profileID" name="profileID" hidden="">
+                            <input type="hidden" value="{{postID}}" id="postID" name="postID" hidden="">
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 commentButton">
+                            <button type="submit" class="btn btn-primary createNewComment">COMMENT</button>
+                        </div>
+
+                    </div>
+                </form>
+
+                <div class="comments">
+                    <span class="CountComments">
+                            
+                    </span>
+
+                    <span class="theStaticWord">
+                        Comments
+                    </span>
+                    <div class="commentsWrapper">
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-3 rightSidePage">
+                <h3> Related Posts </h3>
+                <div class="card">
+                    <div class="card-body opinions">
+
+                        {% for i in getRelatedPosts%}
+                        <a href="{% url 'post' i.id %}">
+                            <p>
+                                {{i.post}}
+                            </p>
+                        </a>
+                        {% endfor %}
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+{% endblock %} {% block javascript %}
+<script src="{% static 'Assets/JS/likePost.js'%}"></script>
+
+<script src="{% static 'Assets/JS/dislikePost.js'%}"></script>
+
+<script src="{% static 'Assets/JS/CreateComments.js'%}"></script>
+
+<script src="{% static 'Assets/JS/numberOfLikesAndDislike.js'%}"></script>
+
+{% endblock %}

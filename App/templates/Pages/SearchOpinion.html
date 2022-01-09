@@ -1,0 +1,150 @@
+{% extends 'pages/base.html' %} {% load crispy_forms_tags %} {% load static %}{% block content %}
+
+<div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+        <a class="navbar-brand" href="#"> <img src="{% static 'Assets/ImagesDesign/LogoNObg.png'%}" class="card-img-top" alt="...">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Search <span class="sr-only">(current)</span></a>
+                </li>
+
+            </ul>
+
+            <form method="GET" action="{% url 'SearchOpinion'%}" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="SearchWrapper">
+                    <label class="sr-only" for="inlineFormInputGroup">Search for people</label>
+                    <div class="input-group mb-2 borderTheSearcher">
+                        <div class="input-group-prepend">
+                            <button class="btn" type="submit"> 
+                                <div class="input-group-text"><i class="fas fa-search"></i></div>
+                            </button>
+                        </div>
+                        <input type="text" class="form-control" name="search" id="inlineFormInputGroup" placeholder="Search Meable">
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </nav>
+
+    <div class="row justify-content-md-center justify-content-sm-center">
+        <div class="col-3 leftSidePage">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item home link">
+                    <a href="{% url 'home' %}"><i class="fas fa-home"></i> Home</a>
+                </li>
+
+                <li class="list-group-item link">
+                    <a href="{% url 'opinions' %}"><i class="fas fa-fire"></i> Unpopular opinions</a>
+                </li>
+                <li class="list-group-item link">
+                    <a href="{% url 'media' %}"><i class="fas fa-play-circle"></i> Media</a>
+                </li>
+
+                <li class="list-group-item link">
+                    <a href="{% url 'Inbox' request.user.id %}"><i class="fas fa-envelope-open"></i> Messages </a>
+                </li>
+                <li class="list-group-item link">
+                    <a href="{% url 'profile' request.user.id%}"><i class="fas fa-user-alt"></i> Profile</a>
+                </li>
+                <li class="list-group-item">
+                    <div class="logOutButton">
+                        <div class="row">
+                            <div class="col-3">
+                                <span class="ImgProfile">
+                                        <img src="{{ profileImg.profileImage.url }}" class="rounded-circle" alt="...">
+                                    </span>
+                            </div>
+                            <div class="col-9">
+                                <div class="NameOfUserLoggedIn">
+                                    <p>
+                                        {{request.user}}
+
+                                        <a href="{% url 'logout_view' %}"><i class="fas fa-sign-out-alt"></i></a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="col-xl-6 col-md-9 col- midleSidePage">
+            {% for i in SearchedOpinion %}
+            <div class="card postsWrapper">
+                <div class="card-body">
+                    <div class="row">
+                        <div class=col-2>
+                            <a href="{% url 'profile' i.userID.id %}">
+                                <span class="ImgProfile">
+                                        <img src="{{ i.profile.profileImage.url }}" class="rounded-circle" alt="...">
+                                    </span>
+                            </a>
+
+                        </div>
+
+                        <div class=col-10>
+                            <a href="{% url 'profile' i.userID.id %}">
+                                <span class="card-title userName">{{i.userID.first_name}} {{i.userID.last_name}}</span>
+                            </a>
+                            <span class="card-title timePosted float-right">{{i.DatePosted|timesince}} ago </span>
+                        </div>
+                    </div>
+
+                    <a href="{% url 'opinionDetail' i.id %}">
+                        <div class="textPadding">
+                            <p class="card-text">{{i.opinion}}</p>
+                        </div>
+                    </a>
+
+                </div>
+
+                <div class="row bottom">
+                    <div class="col-9">
+                        {% for tag in i.tags.all%}
+                        <a href="{% url 'tag_ForOpinions' tag %}">{{tag}}</a> {%endfor%}
+                    </div>
+                    <div class="col-3 likeButton">
+                        <input type="hidden" value="{{request.user.id}}" id="userID" name="UserID" hidden="">
+                        <button value="{{i.id}}" class="fas fa-check-square"></button>
+
+                        <button value="{{i.id}}" class="fas fa-window-close"></button>
+                    </div>
+                </div>
+            </div>
+            {%endfor%}
+
+
+        </div>
+
+        <div class="col-3 rightSidePage">
+
+
+
+        </div>
+
+
+    </div>
+
+
+
+
+</div>
+</div>
+
+
+{% endblock %} {% block javascript %}
+<script src="{% static 'Assets/JS/agreeOpoinions.js'%}"></script>
+
+<script src="{% static 'Assets/JS/disagree.js'%}"></script>
+
+
+{% endblock %}
